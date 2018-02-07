@@ -2,11 +2,17 @@ defmodule PaperweightEngine.Bullet do
     alias __MODULE__
 
     @enforce_keys [:body, :tags, :children, :cursor]
-    defstruct [:body, :tags, :children, :cursor]
+    defstruct [:body, :tags, :children, :cursor, :expansion]
 
     def new(), do:
-        %Bullet{body: "", tags: %{}, children: [], cursor: 0}
+        %Bullet{body: "", tags: %{}, children: [], cursor: 0, expansion: 0}
     
+    def collapse(%Bullet{} = bullet), do:
+        %{bullet | expansion: 0}
+
+    def expand(%Bullet{} = bullet), do:
+        %{bullet | expansion: 1}
+
     def edit(%Bullet{} = bullet, text), do:
         %{bullet | body: text}
 
