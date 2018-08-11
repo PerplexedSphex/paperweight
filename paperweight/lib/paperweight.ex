@@ -1,18 +1,6 @@
 defmodule Paperweight do
-  @moduledoc """
-  Documentation for Paperweight.
-  """
+  alias Paperweight.Item
 
-  @doc """
-  Hello world.
+  defdelegate new_item(), to: Item
 
-  ## Examples
-
-      iex> Paperweight.hello
-      :world
-
-  """
-  def hello do
-    :world
-  end
 end
